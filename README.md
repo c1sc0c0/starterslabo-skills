@@ -12,7 +12,7 @@ This page is only an index. Each skill is a separate repo: clone it **as the ski
 | [starterslabo-eval](https://github.com/c1sc0c0/starterslabo-eval) | Fill the monthly evaluatiefiche Excel (`openpyxl`) | no |
 | [starterslabo-expenses](https://github.com/c1sc0c0/starterslabo-expenses) | Draft **Nieuwe aankoopfactuur SL** (Playwright) | yes |
 | [starterlabo-invoices](https://github.com/c1sc0c0/starterlabo-invoices) | Draft **Nieuwe verkoopfactuur** as concept (Playwright) | yes |
-| [starterslabo-shopify](https://github.com/c1sc0c0/starterslabo-shopify) | Shopify B2C → monthly dagontvangsten + paper ONTVANGSTEN PDF | Shopify + portal for `--apply` |
+| [starterslabo-shopify](https://github.com/c1sc0c0/starterslabo-shopify) | Shopify B2C → monthly dagontvangsten + paper ONTVANGSTEN PDF | Shopify; portal for `--apply` |
 
 ## Install (Cursor, all projects)
 
