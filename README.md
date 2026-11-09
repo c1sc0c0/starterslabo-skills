@@ -10,15 +10,18 @@ This page is only an index. Each skill is a separate repo: clone it **as the ski
 | --- | --- | --- |
 | [starterslabo-faq](https://github.com/c1sc0c0/starterslabo-faq) | Crawl the portal FAQ + bijlagen and answer from a local corpus | yes |
 | [starterslabo-eval](https://github.com/c1sc0c0/starterslabo-eval) | Fill the monthly evaluatiefiche Excel (`openpyxl`) | no |
+| [starterslabo-km](https://github.com/c1sc0c0/starterslabo-km) | Fill the kilometervergoeding Excel (rittenadministratie) | no* |
+| [starterslabo-costs](https://github.com/c1sc0c0/starterslabo-costs) | Draft **Nieuwe onkostennota** (Playwright) | yes |
 | [starterslabo-expenses](https://github.com/c1sc0c0/starterslabo-expenses) | Draft **Nieuwe aankoopfactuur SL** (Playwright) | yes |
 | [starterlabo-invoices](https://github.com/c1sc0c0/starterlabo-invoices) | Draft **Nieuwe verkoopfactuur** as concept (Playwright) | yes |
 | [starterslabo-export](https://github.com/c1sc0c0/starterslabo-export) | Sync **Rapport** accounting tables → UTF-8 CSV | yes |
-| [starterslabo-beancount](https://github.com/c1sc0c0/starterslabo-beancount) | Ingest Rapport CSVs → Beancount ledger (JSONL IR) | no* |
+| [starterslabo-beancount](https://github.com/c1sc0c0/starterslabo-beancount) | Ingest Rapport CSVs → Beancount ledger (JSONL IR) | no† |
 | [starterslabo-shopify](https://github.com/c1sc0c0/starterslabo-shopify) | Shopify paid B2C → dagontvangsten + fee onkostennota | Shopify; portal for `--apply` |
-| [starterslabo-onkostennota](https://github.com/c1sc0c0/starterslabo-onkostennota) | Draft **Nieuwe onkostennota** (Playwright) | yes |
-| [starterslabo-messages](https://github.com/c1sc0c0/starterslabo-messages) | Prefill / send portal **Berichten** | yes |
 
-\*Beancount ingest reads local CSVs from the export skill (or fixtures); portal login is only needed when refreshing exports.
+\*Excel fill only. Uploading the KM sheet to Aankoop uses **starterslabo-costs**.  
+†Beancount ingest reads local CSVs from the export skill (or fixtures); portal login is only needed when refreshing exports.
+
+`starterslabo-messages` (portal Berichten) is not a public repo yet.
 
 ## Accounting pair (export + books)
 
@@ -38,13 +41,13 @@ Defaults work out of the box (`rapport-export/` + local `books/`). Point `STARTE
 ```bash
 git clone https://github.com/c1sc0c0/starterslabo-faq.git ~/.cursor/skills/starterslabo-faq
 git clone https://github.com/c1sc0c0/starterslabo-eval.git ~/.cursor/skills/starterslabo-eval
+git clone https://github.com/c1sc0c0/starterslabo-km.git ~/.cursor/skills/starterslabo-km
+git clone https://github.com/c1sc0c0/starterslabo-costs.git ~/.cursor/skills/starterslabo-costs
 git clone https://github.com/c1sc0c0/starterslabo-expenses.git ~/.cursor/skills/starterslabo-expenses
 git clone https://github.com/c1sc0c0/starterlabo-invoices.git ~/.cursor/skills/starterlabo-invoices
 git clone https://github.com/c1sc0c0/starterslabo-export.git ~/.cursor/skills/starterslabo-export
 git clone https://github.com/c1sc0c0/starterslabo-beancount.git ~/.cursor/skills/starterslabo-beancount
 git clone https://github.com/c1sc0c0/starterslabo-shopify.git ~/.cursor/skills/starterslabo-shopify
-git clone https://github.com/c1sc0c0/starterslabo-onkostennota.git ~/.cursor/skills/starterslabo-onkostennota
-git clone https://github.com/c1sc0c0/starterslabo-messages.git ~/.cursor/skills/starterslabo-messages
 ```
 
 Claude Code: same URLs into `~/.claude/skills/<name>`. Per-project: `.cursor/skills/` or `.claude/skills/` inside the repo.
@@ -65,7 +68,8 @@ Start a new agent chat after cloning. Setup, env vars, and usage are in each rep
 ## Shared rules
 
 - Prefer `STARTERSLABO_EMAIL` / `STARTERSLABO_PASSWORD` for portal runs. Never commit `.env`.
-- FAQ PDFs, filled evaluatiefiches, invoice screenshots, `shopify-sync/` dumps, Rapport CSVs, and Beancount inbox/generated stay on your machine (or a **private** data repo).
+- FAQ PDFs, filled evaluatiefiches, filled kilometer sheets, invoice screenshots, `shopify-sync/` dumps, Rapport CSVs, and Beancount inbox/generated stay on your machine (or a **private** data repo).
+- Do not republish Starterslabo’s official Excel templates.
 - Portal content belongs to Starterslabo; keep crawls and drafts for personal use.
 
 ## License
