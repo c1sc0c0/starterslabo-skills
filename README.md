@@ -17,6 +17,7 @@ This page is only an index. Each skill is a separate repo: clone it **as the ski
 | [starterslabo-export](https://github.com/c1sc0c0/starterslabo-export) | Sync **Rapport** accounting tables → UTF-8 CSV | yes |
 | [starterslabo-beancount](https://github.com/c1sc0c0/starterslabo-beancount) | Ingest Rapport CSVs → Beancount ledger (JSONL IR) | no† |
 | [starterslabo-shopify](https://github.com/c1sc0c0/starterslabo-shopify) | Shopify paid B2C → dagontvangsten + fee onkostennota | Shopify; portal for `--apply` |
+| [starterslabo-bpost](https://github.com/c1sc0c0/starterslabo-bpost) | bpost labels: Shopify order or pasted address → parcel order, review, then pay on bpost | bpost (own account) |
 
 \*Excel fill only. Uploading the KM sheet to Aankoop uses **starterslabo-costs**.  
 †Beancount ingest reads local CSVs from the export skill (or fixtures); portal login is only needed when refreshing exports.
@@ -48,6 +49,7 @@ git clone https://github.com/c1sc0c0/starterlabo-invoices.git ~/.cursor/skills/s
 git clone https://github.com/c1sc0c0/starterslabo-export.git ~/.cursor/skills/starterslabo-export
 git clone https://github.com/c1sc0c0/starterslabo-beancount.git ~/.cursor/skills/starterslabo-beancount
 git clone https://github.com/c1sc0c0/starterslabo-shopify.git ~/.cursor/skills/starterslabo-shopify
+git clone https://github.com/c1sc0c0/starterslabo-bpost.git ~/.cursor/skills/starterslabo-bpost
 ```
 
 Claude Code: same URLs into `~/.claude/skills/<name>`. Per-project: `.cursor/skills/` or `.claude/skills/` inside the repo.
@@ -63,6 +65,18 @@ Start a new agent chat after cloning. Setup, env vars, and usage are in each rep
 
 # 2) CSV → Beancount (needs a private books/ tree; see docs/PATHS.md)
 .venv/bin/python ~/.cursor/skills/starterslabo-beancount/scripts/sync_books.py
+```
+
+## Shipping (not a Labo skill)
+
+[starterslabo-bpost](https://github.com/c1sc0c0/starterslabo-bpost) lives in the same family by naming
+convention only. The skill id is **`bpost-label`**: it builds a bpost Verzendplatform cart from a Shopify
+order number or an address pasted in chat, stops before payment, and hands over the bpost basket link
+(signed in) or a hosted checkout link. Credentials are macOS Keychain only; the token exchange and the
+reverse-engineered bpost API are documented in that repo.
+
+```bash
+git clone https://github.com/c1sc0c0/starterslabo-bpost.git ~/.cursor/skills/starterslabo-bpost
 ```
 
 ## Shared rules
